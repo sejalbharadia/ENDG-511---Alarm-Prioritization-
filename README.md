@@ -17,6 +17,12 @@ cd ENDG-511---Alarm-Prioritization-
 pip install -r requirements.txt
 ```
 
+The `requirements.txt` already lists `lightly` and `torch-pruning` for SSL pretraining and structured pruning. If you install packages manually, run:
+
+```bash
+pip install lightly torch-pruning
+```
+
 ### Step 3: Download Datasets
 
 #### PhysioNet Challenge 2015 (No approval required)
