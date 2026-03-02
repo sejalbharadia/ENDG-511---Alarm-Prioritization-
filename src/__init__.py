@@ -17,19 +17,21 @@ from .prune import prune_model_l1  # noqa: E402,F401
 from .quantize import quantize_fx_model  # noqa: E402,F401
 from .evaluate import evaluate, early_exit_inference  # noqa: E402,F401
 from .utils import count_parameters, get_example_input  # noqa: E402,F401
+from . import preprocess  # noqa: E402,F401
 
 __all__ = [
-	"AlarmClassifier",
-	"TinyBackbone",
-	"ClassifierHead",
-	"EarlyExitHead",
-	"train_supervised",
-	"SSLWrapper",
-	"ssl_train",
-	"prune_model_l1",
-	"quantize_fx_model",
-	"evaluate",
-	"early_exit_inference",
-	"count_parameters",
-	"get_example_input",
+    "AlarmClassifier",
+    "TinyBackbone",
+    "ClassifierHead",
+    "EarlyExitHead",
+    "train_supervised",
+    "SSLWrapper",
+    "ssl_train",
+    "prune_model_l1",
+    "quantize_fx_model",
+    "evaluate",
+    "early_exit_inference",
+    "count_parameters",
+    "get_example_input",
+    "preprocess",
 ]
