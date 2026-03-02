@@ -47,3 +47,21 @@ python -c "import wfdb; wfdb.dl_database('challenge-2015', './data/raw/')"
 
 ## License
 See LICENSE for details. 
+
+## Run Experiments
+
+Example runner script (modes kept minimal):
+
+```bash
+# SSL pretraining (Lightly)
+python src/run_experiment.py --mode ssl
+
+# Structured pruning (torch-pruning)
+python src/run_experiment.py --mode prune --amount 0.3
+
+# Early-exit inference (use thresholds in evaluate)
+python src/run_experiment.py --mode early_exit
+
+# INT8 quantization (PyTorch)
+python src/run_experiment.py --mode quant
+```
