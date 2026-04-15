@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 import torch
-=======
 # import torch
 # import torch_pruning as tp
 
@@ -46,12 +44,10 @@ import torch
 
 import torch
 import torch.nn as nn
->>>>>>> 360ed59214024310735c4d298e24db552301224c
 import torch_pruning as tp
 
 
 def prune_model_l1(model, example_inputs, amount=0.3, device='cpu'):
-<<<<<<< HEAD
     """Perform structured channel pruning using torch_pruning L1FilterPruner.
 
     Args:
@@ -87,7 +83,6 @@ def prune_model_l1(model, example_inputs, amount=0.3, device='cpu'):
         strategy = tp.strategy.L1Strategy()
         pruner = tp.pruner.L1FilterPruner(model, example_inputs=example, ch_sparsity=amount, op_types=[torch.nn.Conv1d])
         pruner.step()
-=======
     """
     Structured channel pruning using torch_pruning L1 norm.
     Compatible with torch_pruning >= 1.3.x (new API).
@@ -125,6 +120,5 @@ def prune_model_l1(model, example_inputs, amount=0.3, device='cpu'):
 
     # Execute one pruning step
     pruner.step()
->>>>>>> 360ed59214024310735c4d298e24db552301224c
 
     return model
