@@ -102,7 +102,6 @@ Complete end-to-end machine learning pipeline with all 4 models and extensive co
   3. **Early Exit CNN** — Cascaded inference for latency reduction
   4. **Pruned CNN** — 30% parameter reduction + recovery training
 - Results: Confusion matrices, accuracy metrics, trade-off plots
-- **Heavily commented code** explaining every decision & technique
 
 **Who should use this:** Anyone wanting to understand the full pipeline, researchers comparing strategies, best for learning & reproducibility.
 
@@ -126,16 +125,16 @@ Data visualization and exploratory data analysis (EDA).
 
 ### 3. **ENDG511_Team11_AlarmPrioritization_MITBIH.ipynb**
 
-**Status:** Deprecated (duplicate of Team11_AP.ipynb)
 
-**Recommendation:** Use **Team11_AP.ipynb** instead as the primary notebook.
+
+** Use **Team11_AP.ipynb** 
 
 ---
 
 
 ## Python Modules (src/) - For Production/Reusability
 
-All modules are designed as **reusable building blocks** for experiments and production systems. Import and use them in your own scripts.
+All modules are designed as **reusable building blocks** for experiments and production systems. These py files are the framework from githubs refrenced in the course D2L. They are used and implemented in the final notebook - Team11_AP.
 
 ### **model.py** — Neural Network Architectures
 
@@ -259,25 +258,6 @@ pruned_model = recover_accuracy(pruned_model, train_loader, epochs=10)
 - Recovery fine-tuning recovers ~95% of original accuracy
 
 
-
----
-
-### **quantize.py** — INT8 Quantization (Optional)
-
-```python
-from src.quantize import quantize_model
-
-# Convert model to INT8 for edge deployment
-quantized_model = quantize_model(baseline_model, test_loader)
-```
-
-Useful for:
-- Embedded devices (phones, edge servers)
-- Further memory reduction
-- Faster inference on specialized hardware
-
----
-
 ### **utils.py** — Helper Functions
 
 Common utilities:
@@ -300,54 +280,11 @@ Common utilities:
 5. Compare results between different models
 ```
 
-### **For Production / Custom Scripts:**
-
-```python
-# Example: Train, prune, and evaluate a model
-from src import preprocess, model, train, prune, evaluate
-import torch
-
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-# 1. Load and preprocess data
-print("Loading data...")
-X, y = preprocess.build_dataset('data/raw', 'data/processed')
-train_loader, test_loader = preprocess.create_dataloaders(X, y)
-
-# 2. Train baseline model
-print("Training baseline model...")
-baseline = model.BaselineCNN().to(device)
-optimizer = torch.optim.Adam(baseline.parameters(), lr=1e-3)
-baseline = train.train_supervised(baseline, train_loader, optimizer, device, epochs=10)
-
-# 3. Prune the model
-print("Pruning model (30%)...")
-pruned = prune.prune_model(baseline, ratio=0.3)
-pruned = prune.recover_accuracy(pruned, train_loader, device, epochs=5)
-
-# 4. Evaluate both
-cm_base, acc_base, f1_base, cr_base = evaluate.evaluate_model(baseline, test_loader, device)
-cm_pruned, acc_pruned, f1_pruned, cr_pruned = evaluate.evaluate_model(pruned, test_loader, device)
-
-print(f"\nBaseline - Acc: {acc_base:.4f}, F1: {f1_base:.4f}, Critical Recall: {cr_base:.4f}")
-print(f"Pruned   - Acc: {acc_pruned:.4f}, F1: {f1_pruned:.4f}, Critical Recall: {cr_pruned:.4f}")
-```
-
----
-
-## Key Results
-
-| Model | Accuracy | Macro-F1 | Critical Recall | Inference (ms) | Parameters |
-|-------|----------|----------|-----------------|----------------|------------|
-| **Baseline CNN** | 0.95 | 0.92 | **0.98** | 1.2 ms | 29.3K |
-| **SSL CNN** | **0.96** | **0.93** | **0.99** | 1.2 ms | 29.3K |
-| **Early Exit CNN** | 0.94 | 0.91 | 0.97 | **0.8 ms** | 29.3K |
-| **Pruned CNN** | 0.93 | 0.90 | 0.96 | **0.6 ms** | 20.5K |
 
 **Key Insights:**
 - SSL pre-training improves Critical Recall (0.98 → 0.99)
-- Early-exit achieves 33% latency reduction with minimal accuracy loss
-- Pruning achieves 30% parameter reduction with recovery fine-tuning
+- Early-exit achieves latency reduction with minimal accuracy loss
+- Pruning achieves 47% parameter reduction with recovery fine-tuning
 
 ---
 
