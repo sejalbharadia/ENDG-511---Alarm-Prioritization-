@@ -52,9 +52,9 @@ jupyter notebook notebooks/data_exploration.ipynb
 ```
 .
 ├── notebooks/
-│   ├── Team11_AP.ipynb                        # ⭐ MAIN: Complete end-to-end pipeline
+│   ├── Team11_AP.ipynb                        # MAIN: Complete end-to-end pipeline
 │   │   └── All 4 models + results + visualizations
-│   └── data_exploration.ipynb                 # Data EDA & signal visualization                         
+│   └── data_exploration.ipynb                 # Data EDA & signal visualization (inital exploration not on the final dataet chosen)                      
 │
 ├── src/                                       # Python modules for reusable code
 │   ├── model.py                               # CNN architectures (BaselineCNN, EarlyExitCNN)
@@ -63,12 +63,11 @@ jupyter notebook notebooks/data_exploration.ipynb
 │   ├── evaluate.py                            # Metrics & evaluation utilities
 │   ├── ssl_train.py                           # Self-supervised learning setup
 │   ├── prune.py                               # Model pruning utilities
-│   ├── quantize.py                            # INT8 quantization (optional)
 │   ├── utils.py                               # Helper functions
 │   └── __init__.py                            # Package initialization
 │
 ├── data/
-│   ├── raw/                                   # MIT-BIH files (not in Git)
+│   ├── raw/                                   # MIT-BIH files 
 │   └── processed/                             # Preprocessed .npy arrays
 │
 ├── results/                                   # Saved models, plots, metrics
@@ -103,7 +102,7 @@ Complete end-to-end machine learning pipeline with all 4 models and extensive co
   4. **Pruned CNN** — 30% parameter reduction + recovery training
 - Results: Confusion matrices, accuracy metrics, trade-off plots
 
-**Who should use this:** Anyone wanting to understand the full pipeline, researchers comparing strategies, best for learning & reproducibility.
+**Who should use this:** Anyone wanting to understand the full pipeline, researchers comparing strategies, and professor/classmates for learning.
 
 ---
 
@@ -113,13 +112,13 @@ Complete end-to-end machine learning pipeline with all 4 models and extensive co
 Data visualization and exploratory data analysis (EDA).
 
 **Contents:**
-- Load MIT-BIH records using `wfdb`
+- Load ECG records using `wfdb`
 - Plot raw ECG signals
 - Visualize 360-sample beat windows
 - Inspect class distribution & label imbalance
 - Signal statistics & annotation counts
 
-**Who should use this:** Anyone new to the MIT-BIH dataset, understanding ECG morphology, debugging data loading.
+**Who should use this:** Anyone new to the ECG dataset, understanding ECG morphology, debugging data loading.
 
 ---
 
@@ -134,7 +133,7 @@ Data visualization and exploratory data analysis (EDA).
 
 ## Python Modules (src/) - For Production/Reusability
 
-All modules are designed as **reusable building blocks** for experiments and production systems. These py files are the framework from githubs refrenced in the course D2L. They are used and implemented in the final notebook - Team11_AP.
+All modules are designed as **reusable building blocks** for this project. These py files are the framework from githubs refrenced in the course D2L. They are used as framework and implemented in the final notebook - Team11_AP.
 
 ### **model.py** — Neural Network Architectures
 
