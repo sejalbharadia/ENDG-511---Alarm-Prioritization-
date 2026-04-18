@@ -325,3 +325,36 @@ pip install -r requirements.txt
 
 ---
 
+## 🚀 Jetson / Edge Deployment Update (NEW)
+
+A new lightweight Python script was added:
+
+### `endg511_final_project_code.py` (Jetson-Optimized Version)
+
+This file is a **deployment-ready version of the full pipeline**, specifically designed for constrained hardware such as NVIDIA Jetson devices.
+
+### Why this file exists:
+
+The original notebook pipeline included:
+- Self-supervised training (compute-heavy)
+- Pruning sweeps and early-exit experiments
+- Multiple model comparisons and visualizations
+- Large dependency stack
+
+These are not suitable for edge devices, so this version was simplified.
+
+### What was changed / removed:
+
+- Removed heavy experiment loops (pruning sweeps, early-exit sweeps)  
+- Removed unnecessary libraries for edge deployment  
+- Simplified pipeline to reduce memory and compute usage  
+- Kept core workflow: data loading → preprocessing → training → evaluation  
+- Optional pruning support kept but disabled by default  
+- SSL included but reduced in complexity  
+
+### Purpose of this file:
+
+- Running on NVIDIA Jetson or similar edge devices  
+- Faster inference testing  
+- Stable execution without memory overload  
+- Hardware-aligned evaluation of baseline performance
