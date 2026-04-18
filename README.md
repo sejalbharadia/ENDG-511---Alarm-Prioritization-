@@ -325,11 +325,11 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Jetson / Edge Deployment Update (NEW)
+## 🚀 Jetson / Edge Deployment
 
 A new lightweight Python script was added:
 
-### `endg511_final_project_code.py` (Jetson-Optimized Version)
+### `code for jetson.py` (Jetson-Optimized Version)
 
 This file is a **deployment-ready version of the full pipeline**, specifically designed for constrained hardware such as NVIDIA Jetson devices.
 
